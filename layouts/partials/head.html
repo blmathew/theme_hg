@@ -1,0 +1,19 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="{{ .Site.BaseURL }}/favicon.ico">
+{{- if eq .Title "" }}
+<title>{{ .Site.Title }}</title>
+{{- else }}
+<title>{{ .Title }} - {{ .Site.Title }}</title>
+{{- end }}
+{{- if ne .Description "" }}
+<meta name="description" content="{{ .Description }}">
+{{- else if isset .Site.Params "description" }}
+<meta name="description" content="{{ .Site.Params.description }}">
+{{- end }}
+{{ hugo.Generator }}
+<link href="{{ .Site.BaseURL }}index.xml" rel="alternate" type="application/rss+xml">
+<link rel="canonical" href="{{ .Permalink }}">
+<link href="{{"assets/bundle.css" | absURL}}" rel="stylesheet">
+<script src="{{"assets/bundle.js" | absURL}}"></script>

@@ -1,0 +1,12 @@
+{{ $githubDocsPath := "" }}
+{{ if isset .Site.Params "github_docs_path" }}
+{{ $githubDocsPath = .Site.Params.github_docs_path }}
+{{ end }}
+{{- with .Site.Params.github_doc_repository -}}
+  {{ $githubDocRepository := .}}
+  {{- with $.File -}}
+    <a href="{{ $githubDocRepository }}/edit/master/{{ $githubDocsPath }}content/{{ .Path }}" class="edit-page">
+      <i class="fas fa-pen-square"></i> Edit on GitHub
+    </a>
+  {{- end -}}
+{{- end -}}

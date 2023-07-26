@@ -1,0 +1,78 @@
+{{ $resource := .Page.Resources.GetMatch (.Get "resource") }}
+
+{{ if isset .Params "resize" }}
+  {{ .Scratch.Set "image" ($resource.Resize .Params.resize) }}
+  {{ .Scratch.Set "modified" true }}
+{{ else if isset .Params "fit" }}
+  {{ .Scratch.Set "image" ($resource.Fit .Params.fit) }}
+  {{ .Scratch.Set "modified" true }}
+{{ else if isset .Params "fill" }}
+  {{ .Scratch.Set "image" ($resource.Fill .Params.fill) }}
+  {{ .Scratch.Set "modified" true }}
+{{ else }}
+  {{ .Scratch.Set "image" $resource }}
+  {{ .Scratch.Set "modified" false }}
+{{ end }}
+{{ $image := .Scratch.Get "image" }}
+{{ $modified := .Scratch.Get "modified" }}
+
+{{ if not (in $resource.RelPermalink $resource.Title) }}
+  {{ .Scratch.Set "title" $resource.Title }}
+{{ else }}
+  {{ .Scratch.Set "title" false }}
+{{ end }}
+{{ $title := .Scratch.Get "title" }}
+
+{{ if isset .Params "alt" }}
+  {{ .Scratch.Set "alt" .Params.alt }}
+{{ else if $title }}
+  {{ .Scratch.Set "alt" $title }}
+{{ else if .Inner }}
+  {{ .Scratch.Set "alt" .Inner }}
+{{ else }}
+  {{ .Scratch.Set "alt" false }}
+{{ end }}
+{{ $alt := .Scratch.Get "alt" }}
+
+{{ if isset .Params "link" }}
+  {{ .Scratch.Set "href" .Params.link }}
+{{ else if $modified }}
+  {{ .Scratch.Set "href" $resource.RelPermalink }}
+{{ else }}
+  {{ .Scratch.Set "href" false }}
+{{ end }}
+{{ $href := .Scratch.Get "href" }}
+
+{{ if isset .Params "target" }}
+  {{ .Scratch.Set "target" .Params.target }}
+{{ else }}
+  {{ .Scratch.Set "target" "_blank" }}
+{{ end }}
+{{ $target := .Scratch.Get "target" }}
+
+{{ if .Inner }}
+  {{ .Scratch.Set "caption" .Inner }}
+{{ else }}
+  {{ .Scratch.Set "caption" false }}
+{{ end }}
+{{ $caption := .Scratch.Get "caption" }}
+
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  {{ if $href }}
+    <a href="{{ $href }}" target="{{ $target }}"{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>
+  {{ end }}
+    <img src="{{ $image.RelPermalink }}"{{ with $alt }} alt="{{ . | markdownify | plainify }}"{{ end }} />
+  {{ if $href }}
+    </a>
+  {{ end }}
+  {{ if or $title $caption }}
+    <figcaption>
+      {{ if $title }}
+        <strong>{{ $title }}</strong>
+      {{ end }}
+      {{ if $caption }}
+        {{ $caption | markdownify }}
+      {{ end }}
+    </figcaption>
+  {{ end }}
+</figure>

@@ -1,0 +1,26 @@
+{
+  "name": "hugo-theme-techdoc",
+  "version": "0.2.2",
+  "description": "The Techdoc is a Hugo Theme for technical documentation.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.ibm.com:bizdev/hugo-theme-techdoc"
+  },
+  "author": "Thingsym",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "esbuild": "^0.17.12",
+    "esbuild-sass-plugin": "2.6.0",
+    "flexbox-grid-mixins": "^0.3.4",
+    "mermaid": "^10.0.1",
+    "sass": "^1.59.3"
+  }
+}

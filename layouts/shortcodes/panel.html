@@ -1,0 +1,26 @@
+{{ $status := .Get "status" }}
+{{ $status_icon := "fa-exclamation-circle" }}
+{{ if eq $status "notice" }}
+  {{ $status_icon = "fa-info-circle" }}
+{{ else if eq $status "success" }}
+  {{ $status_icon = "fa-check-circle" }}
+{{ else if eq $status "warning" }}
+  {{ $status_icon = "fa-exclamation-triangle" }}
+{{ end }}
+<div class="panel {{ with $status }}panel-{{ . }}{{ end }}">
+  {{ with .Get "status" }}
+    <div class="panel-status-icon">
+      <i class="fa fa-3x {{ $status_icon }}"></i>
+    </div>
+  {{ end }}
+  <div class="panel-content">
+    {{- with .Get "title" -}}
+      <div class="panel-header">
+        <h3>{{ if $.Get "icon" }}<i class="{{ $.Get "icon" }}"></i> {{ end }}{{- htmlUnescape . | markdownify -}}</h3>
+      </div>
+    {{- end -}}
+    <div class="panel-body">
+      {{ .Inner | markdownify }}
+    </div>
+  </div>
+</div>

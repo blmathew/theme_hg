@@ -1,0 +1,208 @@
+header {
+  background-color: $header-background-color;
+  padding: .2rem 1.2rem;
+
+  h1 {
+    color: $header-font-color;
+    font-size: 140%;
+    display: inline-block;
+    margin: 0;
+  }
+
+  .version {
+    color: $header-font-color;
+    font-size: 80%;
+  }
+
+  .github {
+    margin-left: .4rem;
+    color: $gray-base;
+    font-size: 180%;
+    &:hover {
+      color: $header-font-color;
+    }
+  }
+
+  .description {
+    color: $header-font-color;
+    margin: 0;
+  }
+}
+
+.menu {
+  background-color: $menu-background-color;
+  padding: 0 1.2rem .4rem;
+  color: $menu-font-color;
+  border-top: 1px solid $menu-line-color;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  li {
+    display: inline-block;
+    margin-right: 1.8rem;
+    position: relative;
+  }
+
+  ul.sub-menu {
+    display: none;
+    margin: 0;
+    position: absolute;
+    top: 1.8rem;
+    left: 0;
+    z-index: 99999;
+
+    li {
+      padding: .4rem;
+      background-color: $menu-background-color;
+      width: 140px;
+      font-size: 80%;
+    }
+  }
+
+  .fa-angle-right {
+    margin-left: .4rem;
+    font-size: 80%;
+  }
+  li.parent:hover > ul.sub-menu {
+    @include grid($flex-flow: column nowrap);
+  }
+
+  @media screen and (max-width: #{map-get($default-breakpoints, xs )} ) {
+    li {
+      display: block;
+      margin-right: 0;
+      border-bottom: 1px solid $menu-line-color;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .fa-angle-right {
+      display: none;
+    }
+
+    ul.sub-menu {
+      display: block;
+      position: static;
+
+      li {
+        width: auto;
+      }
+    }
+  }
+
+  a {
+    display: block;
+    color: $menu-font-color;
+    text-decoration: none;
+    &:hover {
+      color: $menu-font-color-active;
+    }
+  }
+}
+
+main {
+  padding: 1rem 3rem 3rem;
+}
+
+@media screen and (max-width: #{map-get($default-breakpoints, xs )} ) {
+  main {
+    padding: 1rem;
+  }
+}
+
+.sidebar {
+  font-size: 90%;
+  background-color: $sidebar-background-color;
+  border-right: 1px solid $sidebar-line-color;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul ul ul {
+    margin-left: 1rem;
+  }
+  a {
+    display: block;
+    color: $sidebar-font-color;
+    text-decoration: none;
+    padding: .2rem 1.2rem;
+    &:hover {
+      color: $sidebar-font-color-active;
+      background-color: $sidebar-background-color-active;
+      border-left: solid 4px $sidebar-line-color-active;
+    }
+    border-left: solid 4px $sidebar-background-color;
+    border-bottom: solid 1px $sidebar-line-color;
+    position: relative;
+  }
+
+  li li a {
+    padding-left: 2rem;
+  }
+
+  .active > a {
+    background-color: $sidebar-background-color-active;
+    border-left: solid 4px $sidebar-line-color-active;
+  }
+
+  .slide-menu {
+    .has-sub-menu:not(.parent) ul {
+      display: none;
+    }
+
+    .has-sub-menu > a span.mark {
+      display: inline-block;
+      width: 32px;
+      text-align: center;
+      color: $gray-darkest;
+      background: $gray-lightest;
+      border-left: 1px solid $gray-lighter;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+
+    .has-sub-menu > a span.mark:hover {
+      background-color: $gray-darker;
+    }
+  }
+}
+
+.sidebar-footer {
+  margin: 1rem;
+  margin-top: 2rem;
+}
+
+footer {
+  margin-top: 2rem;
+}
+
+.edit-meta {
+  font-size: 80%;
+  margin-top: 2rem;
+  text-align: right;
+}
+
+.edit-page {
+  font-weight: bold;
+}
+
+.powered {
+  font-size: 80%;
+  text-align: right;
+  color: $gray-darker;
+}
+
+.build-timestamp {
+  font-size: 60%;
+  text-align: right;
+  color: $gray-lighter;
+}

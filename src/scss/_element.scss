@@ -1,0 +1,81 @@
+body {
+  font-family: $default-font-family;
+  font-feature-settings : 'pwid';
+  line-height: $default-line-height;
+  background: $default-background-color;
+  margin: 0;
+}
+
+a {
+  color: $default-link-color;
+  &:hover {
+    color: $default-link-hover-color;
+  }
+}
+
+p {
+  font-size: $default-font-size;
+}
+
+code {
+  font-family: $code-font-family;
+  font-size: $code-font-size;
+  background: $code-inline-background-color;
+  padding: .2rem;
+}
+
+pre {
+  color: $code-block-font-color;
+  overflow: auto;
+  background-color: $code-block-background-color;
+  padding: 1rem;
+  border: 1px solid $code-border-color;
+
+  code {
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+blockquote {
+  background-color: $blockquote-background-color;
+  color: $blockquote-font-color;
+  border-left: 4px solid $blockquote-line-color;
+  margin-left: 0;
+  padding: .1rem .8rem;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin-bottom: $default-margin;
+  width: 100%;
+}
+th {
+  background-color: $table-background-color-alternate;
+  padding: .4em;
+  font-weight: bold;
+}
+td {
+  padding: .4em;
+
+  tr:nth-child(even) & {
+    background-color: $table-background-color;
+  }
+}
+th, td {
+  border: 1px solid $table-line-color;
+}
+
+img {
+  max-width: 100%;
+}
+figure {
+  margin: 0;
+}
+
+hr {
+  height: 2px;
+  border: 0;
+  background-color: $gray-darker;
+}
