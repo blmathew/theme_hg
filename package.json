@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.ibm.com:bizdev/hugo-theme-techdoc"
+    "url": "https://github.com/blmathew/theme_hg.git"
   },
   "author": "Thingsym",
   "license": "MIT",
