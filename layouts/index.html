@@ -1,8 +1,6 @@
 {{ define "main" }}
 
-{{- if .Params.include_toc -}}
-{{- .TableOfContents -}}
-{{- end -}}
+
 {{- if .Site.Home.Content -}}
 {{- .Site.Home.Content -}}
 {{- partial "pagination.html" . -}}

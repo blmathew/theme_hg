@@ -1,7 +1,5 @@
 {{- define "main" -}}
-{{- if .Params.include_toc -}}
-{{- .TableOfContents -}}
-{{- end -}}
+
 {{- .Content -}}
 {{- partial "edit-meta.html" . -}}
 {{- partial "pagination.html" . -}}
