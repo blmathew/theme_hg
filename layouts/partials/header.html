@@ -1,12 +1,24 @@
 <header>
-<h1>{{ .Site.Title }}</h1>
-{{ with .Site.Params.version }}
- <span class="version">Version {{ . }}</span>
-{{end}}
-{{- with .Site.Params.github_repository -}}
-<a href="{{ . }}" class="github"><i class="fab fa-github"></i></a>
-{{- end -}}
-{{ with .Site.Params.description }}
-<p class="description">{{ . }}</p>
-{{end}}
-</header>
+    <table style="border-collapse:collapse; border-width: 0">
+        <tr>
+            <td style="width: 80%">
+                <h1>{{ .Site.Title }}</h1>
+                {{ with .Site.Params.version }}
+                <span class="version">Version {{ . }}</span>
+                {{end}}
+            </td>
+            <td style="width: 20%">
+                {{- with .Site.Params.github_repository -}}
+                <a href="{{ . }}" class="github"><i class="fab fa-github"></i></a>
+                {{- end -}}
+            </td>
+    
+        </tr>
+    </table>
+    
+    
+    {{ with .Site.Params.description }}
+    <p class="description">{{ . }}</p>
+    {{end}}
+    </header>
+    
